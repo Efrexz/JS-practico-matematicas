@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula Tu Descuento</title>
+</head>
+<body>
+    <h1>Calcula el Descuento con JS con %</h1>
+
+    <p>Si estas buscando donde calclar el descuento de tu proxima compra. Estas en el lugar indicado :D</p>
+
+    <form action="">
+
+        <label for="input1">Escribe el valor del articulo que deseas Comprar</label>
+            <input type="number" id="input1">
+
+        <label for="input2">Ingresa el descuento que te haran</label>
+            <input type="number" id="input2">
+
+        <button type="button" class="Button">Click Aqui</button>
+    </form>
+
+    <h2 class="resultado"></h2>
+
+    <!--Html de cupones-->
+
+    <h1>Descuentos con cupones :O</h1>
+
+    <label for="montoCompra">
+        Please enter the price of the course you want to take:
+    </label>
+
+    <input type="number" id="montoCompra">
+
+    <br><br>
+
+    <form class="coupons">
+
+        <p>Which coupon would you like to apply?</p>
+        
+        <label for="coupon20">
+            <input id="coupon20" type="radio" name="coupon">
+            Summer Coupon 20% Discount.
+        </label>
+
+        <label for="coupon25">
+            <input id="coupon25" type="radio" name="coupon">
+            Fall Coupon 25% Discount.
+        </label>
+
+        <label for="coupon30">
+            <input id="coupon30" type="radio" name="coupon">
+            Winter Coupon 30% Discount.
+        </label>
+
+    </form>
+
+    <button id="calculatePriceBtn" type="button">Calculate Discount
+    </button>
+
+    <h2 id="descuentoConCupon"></h2>
+    
+
+    <script src="./script.js"></script>
+</body>
+</html>
