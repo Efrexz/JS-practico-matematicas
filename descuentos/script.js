@@ -44,37 +44,88 @@ function calcularOferta(){
     let cupon1 = cupon20.checked;
     let cupon2 = cupon25.checked;
     let cupon3 = cupon30.checked;
+    let priceWithoutCupon = Number(priceCupon.value);
+    let discountCoupon;
+
+    
+    
+    /*Se declaran las variables afuera del if para poder llamarla luego y en cada if inicializo discountCoupon ya que esta declarada arriba */
 
     if(cupon1){
-
-        let priceWithoutCupon = Number(priceCupon.value);
-        let discountCoupon = 20;
-
-        let calculo = (priceWithoutCupon * (100 - discountCoupon)) / 100;
-
-        resultadoDCupon.textContent = `Su compra con el cupon de descuento de ${discountCoupon}% da un total de $ ${calculo}!!!`;
-        return
+        discountCoupon = 20;
     }
 
     else if(cupon2){
-
-        let priceWithoutCupon = Number(priceCupon.value);
-        let discountCoupon = 25;
-
-        let calculo = (priceWithoutCupon * (100 - discountCoupon)) / 100;
-
-        resultadoDCupon.textContent = `Su compra con el cupon de descuento de ${discountCoupon}% da un total de $ ${calculo}!!!`;
-        return
+        discountCoupon = 25;
     }
 
     else if(cupon3){
+        discountCoupon = 30;
+    }
 
-        let priceWithoutCupon = Number(priceCupon.value);
-        let discountCoupon = 30;
-
-        let calculo = (priceWithoutCupon * (100 - discountCoupon)) / 100;
+    let calculo = (priceWithoutCupon * (100 - discountCoupon)) / 100;
 
         resultadoDCupon.textContent = `Su compra con el cupon de descuento de ${discountCoupon}% da un total de $ ${calculo}!!!`;
-        return
+}
+
+
+
+/* Codigos de cupones con arrays */
+
+
+
+/*Llamamos todos los elementos html*/
+let PriceCupon = document.querySelector("#priceTotal");
+let discountCode = document.querySelector("#codeCoupon");
+let btnCuponCode = document.querySelector("#calcularDescuentoCupon");
+let rCuponCode = document.querySelector("#descuentoCupon");
+
+btnCuponCode.addEventListener("click", calcularCodigoDescuento);
+
+
+
+/*Se crea le array y se le añaden varios objetos para el ejercicio*/
+
+let couponsList = [];
+
+couponsList.push({
+    name: "Efrexz20",
+    discountAmount: 20
+})
+couponsList.push({
+    name: "Efrexz30",
+    discountAmount: 30
+})
+couponsList.push({
+    name: "Efrexz40",
+    discountAmount: 40
+})
+
+
+function calcularCodigoDescuento(){
+    
+    let amountEntered = Number(PriceCupon.value);/*Valor que ingresa el usuario*/
+    let codeEntered = discountCode.value;/*Codigo ingresado por el usuario*/
+    let discountCouponWihtCode;
+
+        /*Encontramos el primer elemento que coincida y este devuelve un objeto. Si usaramos el filter devolveria un array junto con el objeto*/
+    let couponSelector = couponsList.find(function (cupon) {
+        return cupon.name == codeEntered;
+    })
+
+    /*al couponSelector devolver un objeto lo toma como true si la variable trae algun objeto o algun dato*/
+    if(couponSelector){
+        discountCouponWihtCode = couponSelector.discountAmount;
     }
+
+    else{
+        rCuponCode.textContent = `El cupon ingresado es incorrecto`;
+        return;
+    }
+
+
+    let calculoCupon = (amountEntered * (100 - discountCouponWihtCode)) / 100;
+
+    rCuponCode.textContent = `Su compra con el cupon de descuento ${couponSelector.name} de ${discountCouponWihtCode}% da un total de $ ${calculoCupon}!!!`;
+
 }
