@@ -108,7 +108,7 @@ function calcularCodigoDescuento(){
     let codeEntered = discountCode.value;/*Codigo ingresado por el usuario*/
     let discountCouponWihtCode;
 
-        /*Encontramos el primer elemento que coincida y este devuelve un objeto. Si usaramos el filter devolveria un array junto con el objeto*/
+        /*Encontramos el primer elemento que coincida y este devuelve un objeto. Si usaramos el filter devolveria un array junto con el objeto lo cual al momento de pasarlo por el if tomaria el array vacion como true pero si ingresamos con [0]. Lo tomaria como undefined osea falso jeje*/
     let couponSelector = couponsList.find(function (cupon) {
         return cupon.name == codeEntered;
     })
